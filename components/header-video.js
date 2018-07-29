@@ -1,14 +1,19 @@
 import styled from 'styled-components'
 
+const Header = styled.header`
+  overflow: hidden;
+`
+
 const HeaderVideo = styled.video`
   object-fit: cover;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
+  display: block;
 `
 
 const HeaderOverlay = styled.div`
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   position: absolute;
   top: 0;
   display: flex;
@@ -16,20 +21,6 @@ const HeaderOverlay = styled.div`
   justify-content: center;
   flex-direction: column;
   background: rgb(205, 19, 56);
-  background: -moz-linear-gradient(
-    bottom,
-    rgba(205, 19, 56, 0.8) 0%,
-    rgba(86, 16, 35, 0.9) 40%,
-    rgba(86, 16, 35, 0.9) 60%,
-    rgba(205, 19, 56, 0.8) 100%
-  );
-  background: -webkit-linear-gradient(
-    bottom,
-    rgba(205, 19, 56, 0.8) 0%,
-    rgba(86, 16, 35, 0.9) 40%,
-    rgba(86, 16, 35, 0.9) 60%,
-    rgba(205, 19, 56, 0.8) 100%
-  );
   background: linear-gradient(
     to top,
     rgba(205, 19, 56, 0.8) 0%,
@@ -37,8 +28,6 @@ const HeaderOverlay = styled.div`
     rgba(86, 16, 35, 0.9) 60%,
     rgba(205, 19, 56, 0.8) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='${props =>
-    props.theme.primary}', endColorstr='${props => props.theme.primary}', GradientType=1);
 `
 
 const HeaderTitle = styled.h1`
@@ -59,7 +48,7 @@ const HeaderSubTitle = styled.h2`
 `
 
 export default () => (
-  <div>
+  <Header>
     <HeaderVideo
       preload="true"
       autoPlay="autoplay"
@@ -75,5 +64,5 @@ export default () => (
       <HeaderTitle>#GO</HeaderTitle>
       <HeaderSubTitle>RED FEET</HeaderSubTitle>
     </HeaderOverlay>
-  </div>
+  </Header>
 )

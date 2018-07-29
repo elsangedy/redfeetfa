@@ -15,19 +15,21 @@ export default class extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="pt-BR">
         <Head>
-          <title>Red Feet Futebol Amercaino</title>
+          <title>Red Feet Futebol Americano</title>
           <meta charSet="utf-8" />
-
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
-          />
-
-          <link rel="stylesheet" type="text/css" href="/static/css/fonts.css" />
-          <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
-
+          <meta name="description" content="Francisco Beltrão Red Feet Futebol Americano" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#cd1338" />
+          <link rel="shortcut icon" href="/static/icons/icon-72x72.png" />
+          <link rel="apple-touch-icon" href="/static/icons/icon-72x72.png" />
+          <link rel="manifest" href="/static/manifest.json" />
+          <meta name="apple-mobile-web-app-title" content="Hacker News" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <link rel="styleshet" type="text/css" href="/static/css/fonts.css" />
           {this.props.styleTags}
         </Head>
         <body>

@@ -1,84 +1,162 @@
+import { Component } from 'react'
 import Link from 'next/link'
 
 import styled from 'styled-components'
+import { Container, Row, Col, media } from 'styled-bootstrap-grid'
 
-const MainMenu = styled.header`
-  height: 100px;
-  margin-top: -4px;
-`
+import ModalMenu from './modal-menu'
 
-const MainNav = styled.nav`
+const Nav = styled.nav`
   height: 50px;
-  ${props => (props.black ? `background-color: ${props.theme.dark}` : '')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: ${props => props.theme.background};
+  box-shadow: 0px -1px 10px #333;
+
+  [data-name='container'],
+  [data-name='row'],
+  [data-name='col'] {
+    height: 100%;
+  }
 `
 
-const MainMenuLink = styled.a`
+const Navbar = styled.nav`
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+
+const NavbarItems = styled.div`
+  height: 100%;
+  flex: 1;
+  justify-content: space-between;
+  display: none;
+
+  ${media.lg`
+    display: flex;
+  `};
+`
+
+const MenuLink = styled.a`
+  height: 100%;
+  cursor: pointer;
   color: ${props => props.theme.dark};
   font-size: 14px;
-`
-
-const MainLogo = styled.img`
-  width: 120px;
-  margin-top: -50px;
-`
-
-const MainMenuItems = styled.div`
-  flex: 1;
+  padding: 10px;
+  text-align: center;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 24px;
+
+    &#btn-home {
+      display: none;
+    }
+
+    &#btn-menu {
+      width: 32px;
+    }
+
+    ${media.lg`
+      width: 16px;
+
+      &#btn-home {
+        display: block;
+      }
+
+      &#btn-menu {
+        display: none;
+      }
+    `};
+  }
 `
 
-export default () => (
-  <MainMenu>
-    <MainNav black />
+const Logo = styled.img`
+  z-index: 999;
+  width: 150px;
+  margin-top: -52px;
 
-    <MainNav>
-      <MainMenuItems>
-        <Link href="/">
-          <MainMenuLink>
-            <img src="/static/images/home-icon.svg" alt="Menu Inicial" width="16" />
-          </MainMenuLink>
-        </Link>
+  ${media.xl`
+    width: 200px;
+    margin-top: -70px;
+  `};
+`
 
-        <Link href="/">
-          <MainMenuLink>RED FEET</MainMenuLink>
-        </Link>
+export default class extends Component {
+  constructor(props) {
+    super(props)
 
-        <Link href="/contact">
-          <MainMenuLink>PATROCINADORES</MainMenuLink>
-        </Link>
+    this.state = {
+      isOpen: false
+    }
 
-        <Link href="/contact">
-          <MainMenuLink>TORCEDOR</MainMenuLink>
-        </Link>
-      </MainMenuItems>
+    this.handleToggle = this.handleToggle.bind(this)
+  }
 
-      <div>
-        <MainLogo src="/static/images/red-feet-header.svg" alt="Logotipo Red Feet" />
-      </div>
+  handleToggle() {
+    this.setState(state => ({ isOpen: !state.isOpen }))
+  }
 
-      <MainMenuItems>
-        <Link href="/contact">
-          <MainMenuLink>TABELA DE JOGOS</MainMenuLink>
-        </Link>
+  render() {
+    const { isOpen } = this.state
 
-        <Link href="/contact">
-          <MainMenuLink>BLOG</MainMenuLink>
-        </Link>
+    return (
+      <Nav>
+        <Container>
+          <Row>
+            <Col>
+              <Navbar>
+                <MenuLink>
+                  <img src={require('../static/images/home-icon.svg')} alt="Página Inicial" id="btn-home" />
+                  <img
+                    src={require('../static/images/menu-icon.svg')}
+                    alt="Menu Principal"
+                    id="btn-menu"
+                    onClick={this.handleToggle}
+                  />
+                </MenuLink>
 
-        <Link href="/contact">
-          <MainMenuLink>PRODUTOS OFICIAIS</MainMenuLink>
-        </Link>
+                <NavbarItems>
+                  <Link href="/">
+                    <MenuLink>RED FEET</MenuLink>
+                  </Link>
 
-        <Link href="/contact">
-          <MainMenuLink>
-            <img src="/static/images/search-icon.svg" alt="Menu Inicial" width="16" />
-          </MainMenuLink>
-        </Link>
-      </MainMenuItems>
-    </MainNav>
-  </MainMenu>
-)
+                  <Link href="/">
+                    <MenuLink>PATROCINADORES</MenuLink>
+                  </Link>
+
+                  <Link href="/">
+                    <MenuLink>TORCEDOR</MenuLink>
+                  </Link>
+                </NavbarItems>
+
+                <Link href="/">
+                  <Logo src={require('../static/images/red-feet-header.svg')} alt="Logotipo Red Feet" />
+                </Link>
+
+                <NavbarItems>
+                  <Link href="/">
+                    <MenuLink>TABELA DE JOGOS</MenuLink>
+                  </Link>
+
+                  <Link href="/">
+                    <MenuLink>BLOG</MenuLink>
+                  </Link>
+
+                  <Link href="/">
+                    <MenuLink>PRODUTOS OFICIAIS</MenuLink>
+                  </Link>
+                </NavbarItems>
+
+                <MenuLink>
+                  <img src={require('../static/images/search-icon.svg')} alt="Busca no site" />
+                </MenuLink>
+              </Navbar>
+            </Col>
+          </Row>
+        </Container>
+
+        <ModalMenu isOpen={isOpen} onClose={this.handleToggle} />
+      </Nav>
+    )
+  }
+}

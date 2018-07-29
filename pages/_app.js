@@ -2,6 +2,8 @@ import App, { Container } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { ThemeProvider, injectGlobal } from 'styled-components'
+import { injectLayoutBaseCSS } from 'styled-bootstrap-grid'
+import styledNormalize from 'styled-normalize'
 
 Router.onRouteChangeError = () => NProgress.done()
 Router.onRouteChangeStart = () => NProgress.start()
@@ -9,14 +11,63 @@ Router.onRouteChangeComplete = () => NProgress.done()
 
 const theme = {
   primary: '#cd1338',
-  dark: '#08080a'
+  dark: '#08080a',
+  background: '#eff3f6',
+
+  green: '#31984d',
+  blue: '#213e78'
 }
 
+injectLayoutBaseCSS()
+
 injectGlobal`
+  ${styledNormalize}
+
   body {
     font-family: 'Rockwell', serif;
-    background-color: #eff3f6;
-    color: #08080a;
+    background-color: ${theme.background};
+    color: ${theme.dark};
+  }
+
+  .affix {
+    position: fixed;
+    top: calc((100vh - 130px) * -1);
+    left: 0;
+    width: 100%;
+    z-index: 99;
+  }
+
+  .affix + main {
+    margin-top: 100vh;
+  }
+
+  #nprogress {
+    pointer-events: none;
+
+    .bar {
+      background: ${theme.primary};
+      position: fixed;
+      z-index: 99999999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+
+    .peg {
+      display: block;
+      position: absolute;
+      right: 0px;
+      width: 100px;
+      height: 100%;
+      box-shadow: 0 0 10px ${theme.primary}, 0 0 5px ${theme.primary};
+      opacity: 1;
+      transform: rotate(3deg) translate(0px, -4px);
+    }
+
+    .spinner {
+      display: none;
+    }
   }
 `
 
