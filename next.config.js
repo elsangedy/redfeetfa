@@ -3,6 +3,9 @@ const WebPWebpackPlugin = require('webp-webpack-plugin')
 const withImages = require('next-images')
 
 module.exports = withImages({
+  exportPathMap: () => ({
+    '/': { page: '/' }
+  }),
   webpack: config => {
     config.plugins.push(
       new WebPWebpackPlugin({
