@@ -22,6 +22,15 @@ export default ({
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
+
+      <meta property="og:site_name" content="Red Feet Futebol Americano" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content="https://redfeet.netlify.com/static/images/red-feet-header.svg" />
+      <meta property="og:url" content="https://redfeet.netlify.com/" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image:alt" content="Red Feet Futebol Americano" />
     </Head>
 
     {children}
