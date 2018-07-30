@@ -72,8 +72,12 @@ const MenuLink = styled.a`
 
 const Logo = styled.img`
   z-index: 999;
-  width: 150px;
-  margin-top: -52px;
+  width: 80px;
+
+  ${media.lg`
+    width: 150px;
+    margin-top: -52px;
+  `};
 
   ${media.xl`
     width: 200px;

@@ -2,7 +2,7 @@ import App, { Container } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { ThemeProvider, injectGlobal } from 'styled-components'
-import { injectLayoutBaseCSS } from 'styled-bootstrap-grid'
+import { injectLayoutBaseCSS, media } from 'styled-bootstrap-grid'
 import styledNormalize from 'styled-normalize'
 
 Router.onRouteChangeError = () => NProgress.done()
@@ -31,10 +31,14 @@ injectGlobal`
 
   .affix {
     position: fixed;
-    top: calc((100vh - 130px) * -1);
+    top: calc((100vh - 50px) * -1);
     left: 0;
     width: 100%;
     z-index: 99;
+
+    ${media.lg`
+      top: calc((100vh - 130px) * -1);
+    `};
   }
 
   .affix + main {
