@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "export": "yarn run build && next export",
+    "postexport": "cp .next/service-worker.js out",
     "format": "pretty-quick --staged",
     "precommit": "yarn format"
   },

@@ -143,22 +143,28 @@ export default class extends Component {
 
                   <Row>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nike.png')} />
+                      <Sponsor src={require('../static/patrocinadores/nike.png')} alt="Patrocinador Nike" />
                     </Col>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nfl.png')} />
+                      <Sponsor src={require('../static/patrocinadores/nfl.png')} alt="Patrocinador NFL" />
                     </Col>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/addidas.png')} />
+                      <Sponsor
+                        src={require('../static/patrocinadores/addidas.png')}
+                        alt="Patrocinador Addidas"
+                      />
                     </Col>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nfl.png')} />
+                      <Sponsor src={require('../static/patrocinadores/nfl.png')} alt="Patrocinador NFL" />
                     </Col>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/addidas.png')} />
+                      <Sponsor
+                        src={require('../static/patrocinadores/addidas.png')}
+                        alt="Patrocinador Addidas"
+                      />
                     </Col>
                     <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nike.png')} />
+                      <Sponsor src={require('../static/patrocinadores/nike.png')} alt="Patrocinador Nike" />
                     </Col>
                   </Row>
                 </Col>
