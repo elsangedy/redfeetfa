@@ -9,6 +9,7 @@ const HeaderVideo = styled.video`
   width: 100%;
   height: calc(100vh - 50px);
   display: block;
+  background-color: ${props => props.theme.primary};
 `
 
 const HeaderOverlay = styled.div`

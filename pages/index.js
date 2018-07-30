@@ -49,7 +49,7 @@ export default class extends Component {
 
         <Main>
           <Banners>
-            <BannerItem color="primary" />
+            <BannerItem color="primary" src={require('../static/banners/banner1.jpg')} />
             <BannerItem color="blue" />
             <BannerItem color="green" />
           </Banners>
