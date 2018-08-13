@@ -9,7 +9,7 @@ module.exports = withImages({
   webpack: config => {
     config.plugins.push(
       new WebPWebpackPlugin({
-        match: /(jpe?g|png)$/,
+        match: /(jpe?g|png|webp)$/,
         webp: {
           quality: 80
         }

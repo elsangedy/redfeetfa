@@ -3,20 +3,20 @@ import { Component } from 'react'
 
 import { Container, Row, Col } from 'styled-bootstrap-grid'
 
-import Main from '../components/main'
 import Affix from '../components/affix'
 import Title from '../components/title'
-import Layout from '../components/layout'
-import Section from '../components/section'
-import Sponsor from '../components/sponsor'
 import Banners, { BannerItem } from '../components/banners'
 import Sidebar from '../components/sidebar'
-import MainMenu from '../components/main-menu'
 import LastGame from '../components/last-game'
 import HeaderVideo from '../components/header-video'
-import SectionTitle from '../components/section-title'
 import ChampionshipTable from '../components/championship-table'
 import Card, { CardBody, CardTag, CardImage, CardTitle, CardSubtitle } from '../components/card'
+
+import Main from '../components/atoms/main'
+import Menu from '../components/organisms/menu'
+import Layout from '../components/templates/layout'
+import Featured from '../components/molecules/featured'
+import Sponsors from '../components/organisms/sponsors'
 
 // const MainMenu = dynamic(import('../components/main-menu'))
 // const LastGame = dynamic(import('../components/last-game'))
@@ -25,6 +25,71 @@ import Card, { CardBody, CardTag, CardImage, CardTitle, CardSubtitle } from '../
 // const ChampionshipTable = dynamic(import('../components/championship-table'))
 
 export default class extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      sponsors: [
+        { url: 'clinica-de-fisioterapia-vida.jpeg', name: 'Clinica de Fisioterapia Vida' },
+        { url: 'inhoatto.jpeg', name: 'Inhoatto' },
+        {
+          url: 'pasc-plano-assistencial-sao-cristovao.jpeg',
+          name: 'PASC - Plano Assistencial São Cristovão'
+        },
+        { url: 'prefeitura-de-francisco-beltrao-2.jpeg', name: 'Prefeitura de Francisco VBeltrão' },
+        { url: 'revetex-tintas-e-revestimentos.jpeg', name: 'Revetex - Tintas e Revistimentos' },
+        { url: 'ruthes-contabilidade-e-assessoria.jpeg', name: 'Ruthes - Contabilidade e Assessoria' },
+        { url: 'sony-frutas.jpeg', name: 'Sony Frutas' },
+        { url: 'torkmaq-solucoes-metalicas.jpeg', name: 'Torkmaq - Soluções Metalicas' }
+      ],
+      featureds: {
+        featured1: {
+          id: '1',
+          image: '/static/posts/post1.png',
+          title: 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT',
+          description: '',
+          tags: [
+            { id: '1', name: 'NOTÍCIAS', color: 'primary' },
+            { id: '2', name: 'PARANAENSE 2018', color: 'green' }
+          ]
+        },
+        featured2: {
+          id: '2',
+          image: '/static/posts/post2.png',
+          title: 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT',
+          description: '',
+          tags: [
+            { id: '1', name: 'NOTÍCIAS', color: 'primary' },
+            { id: '2', name: 'PARANAENSE 2018', color: 'green' }
+          ]
+        },
+        featured3: {
+          id: '3',
+          image: '/static/posts/post3.png',
+          title: 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT',
+          description: `
+            <p>Lorem ipsum dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut commodo.</p>
+          `,
+          tags: [
+            { id: '1', name: 'NOTÍCIAS', color: 'primary' },
+            { id: '2', name: 'PARANAENSE 2018', color: 'green' }
+          ]
+        },
+        featured4: {
+          id: '4',
+          image: 'https://www.youtube.com/embed/kkmVlRax-AA?rel=0&amp;controls=0&amp;showinfo=0',
+          title: 'Red Feet primeiro jogo',
+          description: '',
+          tags: [
+            { id: '1', name: 'NOTÍCIAS', color: 'primary' },
+            { id: '2', name: 'PARANAENSE 2018', color: 'green' }
+          ]
+        }
+      }
+    }
+  }
+
   componentDidMount() {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
@@ -44,7 +109,7 @@ export default class extends Component {
         <Affix>
           <HeaderVideo />
 
-          <MainMenu />
+          <Menu />
         </Affix>
 
         <Main>
@@ -61,47 +126,16 @@ export default class extends Component {
 
                 <Row>
                   <Col md="6">
-                    <Card>
-                      <CardImage src={require('../static/posts/post1.png')} />
-                      <CardBody>
-                        <CardTag>NOTÍCIAS</CardTag>
-                        <CardTag color="green">PARANAENSE 2018</CardTag>
-                        <CardTitle>LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT</CardTitle>
-                      </CardBody>
-                    </Card>
+                    <Featured {...this.state.featureds.featured1} />
                   </Col>
                   <Col md="6">
-                    <Card>
-                      <CardImage src={require('../static/posts/post2.png')} />
-                      <CardBody>
-                        <CardTag>NOTÍCIAS</CardTag>
-                        <CardTag color="green">PARANAENSE 2018</CardTag>
-                        <CardTitle>LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT</CardTitle>
-                      </CardBody>
-                    </Card>
+                    <Featured {...this.state.featureds.featured2} />
                   </Col>
                 </Row>
 
                 <Row>
                   <Col>
-                    <Card direction="row">
-                      <CardImage size="md" src={require('../static/posts/post3.png')} />
-                      <CardBody>
-                        <CardTag>NOTÍCIAS</CardTag>
-                        <CardTag color="green">PARANAENSE 2018</CardTag>
-                        <CardTitle>LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT</CardTitle>
-                        <CardSubtitle>
-                          <p>
-                            Lorem ipsum dolor sit amet, consecte tuer adipiscing elit, sed diam nonummy nibh
-                            euismod tincidunt ut laoreet.
-                          </p>
-                          <p>
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-                            lobortis nisl ut commodo.
-                          </p>
-                        </CardSubtitle>
-                      </CardBody>
-                    </Card>
+                    <Featured {...this.state.featureds.featured3} direction="row" size="md" />
                   </Col>
                 </Row>
 
@@ -135,42 +169,7 @@ export default class extends Component {
             </Row>
           </Container>
 
-          <Section>
-            <Container>
-              <Row>
-                <Col style={{ textAlign: 'center' }}>
-                  <SectionTitle>PATROCINADORES</SectionTitle>
-
-                  <Row>
-                    <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nike.png')} alt="Patrocinador Nike" />
-                    </Col>
-                    <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nfl.png')} alt="Patrocinador NFL" />
-                    </Col>
-                    <Col md="6" lg="4">
-                      <Sponsor
-                        src={require('../static/patrocinadores/addidas.png')}
-                        alt="Patrocinador Addidas"
-                      />
-                    </Col>
-                    <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nfl.png')} alt="Patrocinador NFL" />
-                    </Col>
-                    <Col md="6" lg="4">
-                      <Sponsor
-                        src={require('../static/patrocinadores/addidas.png')}
-                        alt="Patrocinador Addidas"
-                      />
-                    </Col>
-                    <Col md="6" lg="4">
-                      <Sponsor src={require('../static/patrocinadores/nike.png')} alt="Patrocinador Nike" />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
-          </Section>
+          <Sponsors items={this.state.sponsors} />
         </Main>
       </Layout>
     )

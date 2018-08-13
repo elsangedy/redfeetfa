@@ -39,7 +39,7 @@ const FooterLinksItem = styled.li`
 
 export default () => (
   <Footer>
-    <FooterLogo src={require('../static/images/red-feet-symbol.svg')} alt="Red Feet Logo" />
+    <FooterLogo src={require('../../static/images/red-feet-symbol.svg')} alt="Red Feet Logo" />
 
     <Container>
       <Row>
@@ -47,19 +47,19 @@ export default () => (
           <FooterLinksTitle>LINKS</FooterLinksTitle>
 
           <FooterLinks>
-            <Link href="/">
+            <Link href="/patrocinadores">
               <FooterLinksItem>Patrocinadores</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/torcedor">
               <FooterLinksItem>Torcedor</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/tabela-de-jogos">
               <FooterLinksItem>Tabela de Jogos</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/noticias">
               <FooterLinksItem>Blog</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/loja-red-feet">
               <FooterLinksItem>Produtos Oficiais</FooterLinksItem>
             </Link>
           </FooterLinks>
@@ -68,16 +68,16 @@ export default () => (
           <FooterLinksTitle>RED FEET</FooterLinksTitle>
 
           <FooterLinks>
-            <Link href="/">
+            <Link href="/historia">
               <FooterLinksItem>História</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/titulos">
               <FooterLinksItem>Títulos</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/jogadores">
               <FooterLinksItem>Jogadores</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="/uso-da-marca">
               <FooterLinksItem>Uso da Marca</FooterLinksItem>
             </Link>
           </FooterLinks>
@@ -86,10 +86,10 @@ export default () => (
           <FooterLinksTitle>ACOMPANHE</FooterLinksTitle>
 
           <FooterLinks>
-            <Link href="/">
+            <Link href="https://fb.com/sudoesteredfeet">
               <FooterLinksItem>/REDFEET</FooterLinksItem>
             </Link>
-            <Link href="/">
+            <Link href="https://twitter.com/sudoesteredfeet">
               <FooterLinksItem>@REDFEET</FooterLinksItem>
             </Link>
             <Link href="/">

@@ -1,12 +1,12 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
 
-import Footer from './footer'
+import Footer from '../organisms/footer'
 
 export default ({
   children,
   title = 'Red Feet Futebol Americano',
-  description = 'Francisco Beltrão Red Feet Futebol Americano"'
+  description = 'O Francisco Beltrão Red Feet é a primeira e única equipe de futebol americano no sudoeste do Paraná. Fundada em 26/02/11, a equipe conta com cerca de 60 atletas dos municípios de vários municípios do Sudoeste do Paraná os quais vivem focados pela excelência e máxima competitividade dentro e fora de campo, como um estilo de vida. Nasceu Dois Vizinhos Red Feet, mudou para Sudoeste Red Feet e atualmente leva o nome da cidade de Francisco Beltrão. Em sua história foi campeão da primeira Copa Fronteira, em 2016, campeão do 1º Pinhão Bowl, em 2017, ano que chegou às semifinais do Campeonato Paranaense.'
 }) => (
   <Fragment>
     <Head>
@@ -26,8 +26,8 @@ export default ({
       <meta property="og:site_name" content="Red Feet Futebol Americano" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://redfeet.netlify.com/static/images/red-feet-header.svg" />
-      <meta property="og:url" content="https://redfeet.netlify.com/" />
+      <meta property="og:image" content="https://redfeetfa.com.br/static/images/red-feet-header.svg" />
+      <meta property="og:url" content="https://redfeetfa.com.br/" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image:alt" content="Red Feet Futebol Americano" />

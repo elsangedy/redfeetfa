@@ -7,4 +7,5 @@ export default styled.div`
   padding: 10px 30px;
   display: inline-block;
   border: 3px solid ${props => props.theme.primary};
+  max-width: max-content;
 `
