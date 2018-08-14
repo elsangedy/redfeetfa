@@ -52,7 +52,7 @@ export default class extends Document {
           <Main />
           <NextScript />
 
-          {isProduction && (
+          {this.props.isProduction && (
             <Fragment>
               <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32492125-4" />
               <script dangerouslySetInnerHTML={this.setGoogleTags()} />
