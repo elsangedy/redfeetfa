@@ -28,6 +28,8 @@ export default ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content="https://redfeetfa.com.br/static/images/red-feet-header.svg" />
       <meta property="og:url" content="https://redfeetfa.com.br/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="pt_BR" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image:alt" content="Red Feet Futebol Americano" />

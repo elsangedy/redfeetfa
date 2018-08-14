@@ -2,14 +2,30 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class extends Document {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps(ctx) {
+    const isProduction = process.env.NODE_ENV === 'production'
+    const initialProps = await Document.getInitialProps(ctx)
+
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const page = ctx.renderPage(App => props => sheet.collectStyles(<App {...props} />))
     const styleTags = sheet.getStyleElement()
 
     return {
       ...page,
-      styleTags
+      styleTags,
+      isProduction,
+      ...initialProps
+    }
+  }
+
+  setGoogleTags() {
+    return {
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32492125-4');
+      `
     }
   }
 
@@ -36,13 +52,12 @@ export default class extends Document {
           <Main />
           <NextScript />
 
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32492125-4"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-32492125-4');
-          </script>
+          {isProduction && (
+            <Fragment>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32492125-4" />
+              <script dangerouslySetInnerHTML={this.setGoogleTags()} />
+            </Fragment>
+          )}
         </body>
       </html>
     )

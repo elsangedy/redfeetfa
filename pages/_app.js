@@ -5,9 +5,14 @@ import { ThemeProvider, injectGlobal } from 'styled-components'
 import { injectLayoutBaseCSS, media } from 'styled-bootstrap-grid'
 import styledNormalize from 'styled-normalize'
 
+import ga from '../utils/ga'
+
 Router.onRouteChangeError = () => NProgress.done()
 Router.onRouteChangeStart = () => NProgress.start()
-Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeComplete = url => {
+  NProgress.done()
+  ga(url)
+}
 
 const theme = {
   primary: '#cd1338',
