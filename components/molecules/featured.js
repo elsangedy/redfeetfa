@@ -1,22 +1,24 @@
 import Link from 'next/link'
 
-import Card, { CardBody, CardTag, CardImage, CardTitle, CardSubtitle } from '../card'
+import { RichText } from 'prismic-reactjs'
 
-export default ({ id, image, title, description, tags, direction = 'column', size = 'sm' }) => (
-  <Link href={`/noticias/${id}`}>
+import Card, { CardBody, CardTag, CardImage, CardTitle, CardSubtitle } from '../atoms/card'
+
+export default ({ slug, data: { title, image, resume }, direction = 'column', size = 'sm' }) => (
+  <Link href={`/noticias/${slug}`}>
     <Card direction={direction}>
-      <CardImage src={image} size={size} />
+      <CardImage src={image.small.url} size={size} />
 
       <CardBody>
-        {tags.map(tag => (
-          <Link key={tag.id} href={`/noticias/tag/${tag.id}`}>
+        {/* {tags.map(({ tag }) => (
+          <Link key={tag.uid} href={`/tags/${tag.uid}`}>
             <CardTag color={tag.color}>{tag.name}</CardTag>
           </Link>
-        ))}
+        ))} */}
 
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{title[0].text}</CardTitle>
 
-        {direction === 'row' && <CardSubtitle dangerouslySetInnerHTML={{ __html: description }} />}
+        {direction === 'row' && <CardSubtitle>{RichText.render(resume)}</CardSubtitle>}
       </CardBody>
     </Card>
   </Link>

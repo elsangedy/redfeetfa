@@ -10,8 +10,8 @@ export default ({ items }) => (
       <SectionTitle>PATROCINADORES</SectionTitle>
 
       <Row>
-        {items.map(item => (
-          <SponsorItem key={item.id} {...item} />
+        {items.map(({ uid, data }) => (
+          <SponsorItem key={uid} {...data} />
         ))}
       </Row>
     </Container>

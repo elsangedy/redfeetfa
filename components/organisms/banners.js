@@ -1,4 +1,4 @@
-import { Component, Children, cloneElement } from 'react'
+import { Component } from 'react'
 
 import styled from 'styled-components'
 
@@ -22,7 +22,7 @@ const BannerArrow = styled.div`
   text-shadow: 1px 1px 1px #000;
 `
 
-export const BannerItem = styled.div`
+const BannerItem = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme[props.color]};
@@ -47,7 +47,7 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const total = Children.count(this.props.children)
+    const total = this.props.banners.length
 
     this.setState({
       current: 0,
@@ -56,7 +56,7 @@ export default class extends Component {
   }
 
   componentWillReceiveProps(next) {
-    const total = Children.count(next.children)
+    const total = next.banners.length
 
     if (this.state.total !== total) {
       this.setState({
@@ -81,19 +81,32 @@ export default class extends Component {
   }
 
   render() {
-    const { children } = this.props
-    const { current } = this.state
+    const { banners } = this.props
+    const { total, current } = this.state
 
     return (
       <Banner>
-        <BannerArrow left onClick={this.handlePrev}>
-          {'<'}
-        </BannerArrow>
-        <BannerArrow right onClick={this.handleNext}>
-          {'>'}
-        </BannerArrow>
+        {total > 1 && (
+          <BannerArrow left onClick={this.handlePrev}>
+            {'<'}
+          </BannerArrow>
+        )}
 
-        {Children.map(children, (child, i) => cloneElement(child, { isShow: current === i }))}
+        {total > 1 && (
+          <BannerArrow right onClick={this.handleNext}>
+            {'>'}
+          </BannerArrow>
+        )}
+
+        {banners.map((banner, i) => (
+          <BannerItem
+            color="primary"
+            alt={banner.data.name}
+            key={banner.uid}
+            src={banner.data.image.url}
+            isShow={current === i}
+          />
+        ))}
       </Banner>
     )
   }

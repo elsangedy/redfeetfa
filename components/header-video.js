@@ -48,7 +48,7 @@ const HeaderSubTitle = styled.h2`
   text-align: center;
 `
 
-export default () => (
+export default ({ video }) => (
   <Header>
     <HeaderVideo
       preload="true"
@@ -57,8 +57,8 @@ export default () => (
       muted="true"
       poster="/static/images/red-feet-symbol.svg"
     >
-      <source src="/static/videos/header.mov" type="video/mov" />
-      <source src="/static/videos/header.mp4" type="video/mp4" />
+      <source src={video.mov.url} type="video/mov" />
+      <source src={video.mp4.url} type="video/mp4" />
     </HeaderVideo>
 
     <HeaderOverlay>
